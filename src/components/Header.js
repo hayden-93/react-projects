@@ -1,7 +1,7 @@
 import "./Header.css";
-import logo from "../logo.svg";
+import Link from "./Link";
 
-function Header() {
+function Header({ logo }) {
   return (
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
@@ -9,14 +9,7 @@ function Header() {
         Edit <code>src/App.js</code>
         and save to reload.
       </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
+      <Link url="https://reactjs.org" title="Learn React" />
     </header>
   );
 }
