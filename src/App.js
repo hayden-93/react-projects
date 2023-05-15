@@ -4,6 +4,7 @@ import logo from "./assets/logo.svg";
 
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
+import Projects from "./pages/Projects";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Header logo={logo} />
         <Routes>
           <Route path="/" element={<Profile userName="octocat" />} />
+          <Route path="/projects" element={<Projects userName="octocat" />} />
         </Routes>
       </BrowserRouter>
     </div>
