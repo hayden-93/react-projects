@@ -1,6 +1,6 @@
 import "./App.css";
-import Board from "./Pages/Board/Board";
-import Header from "./components/Header/Header";
+import { Board } from "./Pages/Board/Board";
+import { Header } from "./components/Header/Header";
 
 function App() {
   return (

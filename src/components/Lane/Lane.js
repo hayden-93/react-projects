@@ -1,7 +1,7 @@
 import "./Lane.css";
-import Task from "../Task/Task";
+import { Task } from "../Task/Task";
 
-function Lane({ title, loading, error, tasks }) {
+export function Lane({ title, loading, error, tasks }) {
   return (
     <div className="Lane-wrapper">
       <h2>{title}</h2>
@@ -20,5 +20,3 @@ function Lane({ title, loading, error, tasks }) {
     </div>
   );
 }
-
-export default Lane;
