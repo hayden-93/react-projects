@@ -1,3 +1,4 @@
+import "./Board.css";
 import Lane from "../components/Lane";
 
 const lanes = [
