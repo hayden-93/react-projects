@@ -1,3 +1,5 @@
+import "./Lane.css";
+
 function Lane({ title }) {
   return (
     <div className="Lane-wrapper">
