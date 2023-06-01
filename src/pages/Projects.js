@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import List from "../components/List";
-import { Link as RouterLink } from "react-router-dom";
 
 function Projects({ userName }) {
   const [loading, setLoading] = useState(true);
@@ -12,11 +11,13 @@ function Projects({ userName }) {
         `https://api.github.com/users/${userName}/repos`
       );
       const result = await data.json();
+
       if (result) {
         setProjects(result);
         setLoading(false);
       }
     }
+
     fetchData();
   }, [userName]);
 
@@ -30,10 +31,8 @@ function Projects({ userName }) {
           <List
             items={projects.map((project) => ({
               field: project.name,
-              value: (
-                <RouterLink to={project.html_url} title={project.html_url} />
-              ),
-            }))items}
+              url: project.html_url,
+            }))}
           />
         </div>
       )}
