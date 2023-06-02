@@ -1,7 +1,7 @@
 import "./Lane.css";
 import { Task } from "../Task/Task";
 
-export function Lane({ title, loading, error, tasks }) {
+export function Lane({ title, loading, error, tasks, onDragStart }) {
   return (
     <div className="Lane-wrapper">
       <h2>{title}</h2>
@@ -14,6 +14,7 @@ export function Lane({ title, loading, error, tasks }) {
             id={task.id}
             title={task.title}
             body={task.body}
+            onDragStart={onDragStart}
           />
         ))
       )}
