@@ -1,5 +1,5 @@
-import Task from "../../Components/Task/Task";
-import { useDataFetching } from "../../Hooks/useDataFetching";
+import { Task } from "../../components/Task/Task";
+import { useDataFetching } from "../../hooks/useDataFetching";
 import "./Backlog.css";
 
 export function Backlog() {

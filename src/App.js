@@ -1,4 +1,5 @@
 import "./App.css";
+import { Backlog } from "./Pages/Backlog";
 import { Board } from "./Pages/Board/Board";
 import { Header } from "./components/Header/Header";
 
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <Header />
       <Board />
+      <Backlog />
     </div>
   );
 }
