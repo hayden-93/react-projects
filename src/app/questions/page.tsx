@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import { Card } from "../components/Card/Card";
 
@@ -11,7 +13,11 @@ const QuestionsContainer = styled.div`
   margin: 5%;
 `;
 
-interface Question {
+const CardLink = styled.a`
+  text-decoration: none;
+`;
+
+export interface Question {
   question_id: number;
   title: string;
   view_count: number;
@@ -21,13 +27,18 @@ interface Question {
 function QuestionsPage() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
 
   useEffect(() => {
     async function fetchData() {
       const data = await fetch(
-        "https://api.stackexchange.com/2.2/questions?order=desc&sort=hot&tagged=reactjs&site=stackoverflow"
+        `https://api.stackexchange.com/2.2/questions?${
+          page ? `page=${page}&` : ""
+        }order=desc&sort=hot&tagged=reactjs&site=stackoverflow`
       );
       const result = await data.json();
+      console.log(result);
 
       if (result) {
         setQuestions(result.items);
@@ -35,7 +46,7 @@ function QuestionsPage() {
       }
     }
     fetchData();
-  }, []);
+  }, [page]);
 
   return (
     <QuestionsContainer>
@@ -45,12 +56,19 @@ function QuestionsPage() {
       ) : (
         <div>
           {questions.map((question) => (
-            <Card
+            <Link
               key={question.question_id}
-              title={question.title}
-              views={question.view_count}
-              answers={question.answer_count}
-            />
+              href={`/questions/${question.question_id}`}
+              passHref
+            >
+              <CardLink key={question.question_id}>
+                <Card
+                  title={question.title}
+                  views={question.view_count}
+                  answers={question.answer_count}
+                />
+              </CardLink>
+            </Link>
           ))}
         </div>
       )}
