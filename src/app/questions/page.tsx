@@ -11,9 +11,16 @@ const QuestionsContainer = styled.div`
   margin: 5%;
 `;
 
-export default function QuestionsPage() {
-  const [questions, setQuestions] = useState([]);
+interface Question {
+  question_id: number;
+  title: string;
+  view_count: number;
+  answer_count: number;
+}
+
+function QuestionsPage() {
   const [loading, setLoading] = useState(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,6 +40,22 @@ export default function QuestionsPage() {
   return (
     <QuestionsContainer>
       <h2>Questions</h2>
+      {loading ? (
+        <span>Loading...</span>
+      ) : (
+        <div>
+          {questions.map((question) => (
+            <Card
+              key={question.question_id}
+              title={question.title}
+              views={question.view_count}
+              answers={question.answer_count}
+            />
+          ))}
+        </div>
+      )}
     </QuestionsContainer>
   );
 }
+
+export default QuestionsPage;
