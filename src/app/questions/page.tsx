@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 
 const QuestionsContainer = styled.div`
@@ -7,7 +9,7 @@ const QuestionsContainer = styled.div`
   margin: 5%;
 `;
 
-export function Questions() {
+export default function QuestionsPage() {
   return (
     <QuestionsContainer>
       <h2>Questions</h2>
