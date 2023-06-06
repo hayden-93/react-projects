@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import { Card } from "../components/Card/Card";
+import { Pagination } from "../components/Pagination/Pagination";
 
 const QuestionsContainer = styled.div`
   display: flex;
@@ -27,8 +28,9 @@ export interface Question {
 function QuestionsPage() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [hasMore, setHasMore] = useState(false);
   const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  const page = searchParams.get("page") as string;
 
   useEffect(() => {
     async function fetchData() {
@@ -42,6 +44,7 @@ function QuestionsPage() {
 
       if (result) {
         setQuestions(result.items);
+        setHasMore(result.has_more);
         setLoading(false);
       }
     }
@@ -54,23 +57,26 @@ function QuestionsPage() {
       {loading ? (
         <span>Loading...</span>
       ) : (
-        <div>
-          {questions.map((question) => (
-            <Link
-              key={question.question_id}
-              href={`/questions/${question.question_id}`}
-              passHref
-            >
-              <CardLink key={question.question_id}>
-                <Card
-                  title={question.title}
-                  views={question.view_count}
-                  answers={question.answer_count}
-                />
-              </CardLink>
-            </Link>
-          ))}
-        </div>
+        <>
+          <div>
+            {questions.map((question) => (
+              <Link
+                key={question.question_id}
+                href={`/questions/${question.question_id}`}
+                passHref
+              >
+                <CardLink key={question.question_id}>
+                  <Card
+                    title={question.title}
+                    views={question.view_count}
+                    answers={question.answer_count}
+                  />
+                </CardLink>
+              </Link>
+            ))}
+          </div>
+          <Pagination currentPage={parseInt(page) || 1} hasMore={hasMore} />
+        </>
       )}
     </QuestionsContainer>
   );
