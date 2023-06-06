@@ -6,11 +6,16 @@ const PaginationContainer = styled.div`
   justify-content: center;
 `;
 
-const PaginationLink = styled.div`
+interface PaginationLinkProps {
+  disabled?: boolean;
+}
+
+const PaginationLink = styled.a<PaginationLinkProps>`
   padding: 2%;
   margin: 1%;
-  background: orange;
-  cursor: pointer;
+  background: ${(props) => (!props.disabled ? "orange" : "lightgray")};
+  pointer-events: ${(props) => (!props.disabled ? "all" : "none")};
+  cursor: ${(props) => (!props.disabled ? "pointer" : "not-allowed")};
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -20,10 +25,10 @@ export function Pagination({ currentPage, hasMore }: any) {
   return (
     <PaginationContainer>
       <Link href={`?page=${parseInt(currentPage) - 1}`}>
-        <PaginationLink>Previous</PaginationLink>
+        <PaginationLink disabled={currentPage <= 1}>Previous</PaginationLink>
       </Link>
       <Link href={`?page=${parseInt(currentPage) + 1}`}>
-        <PaginationLink>Next</PaginationLink>
+        <PaginationLink disabled={!hasMore}>Next</PaginationLink>
       </Link>
     </PaginationContainer>
   );
