@@ -1,20 +1,34 @@
-# React Projects
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Welcome to the "React Projects" repository!
+## Getting Started
 
-This is my playground for all things React. Here, I'll be building a collection of projects using React and experimenting with various tools, frameworks, and libraries to enhance my development skills.
+First, run the development server:
 
-It's an opportunity for me to explore different ideas, try out new techniques, and share my progress with the community. Each project will have its own branch, complete with a README file describing its purpose, features, and any additional resources I've used. Whether you're a developer looking for inspiration or simply curious about what can be done with React, feel free to browse through the projects and get a glimpse of my React journey.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-Join me as I dive into the world of React and create exciting things!
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Connect with Me
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- Check out my articles on Medium: [@hbsdev](https://medium.com/@hbsdev)
-- Follow me on Twitter: [@hbsdev](https://twitter.com/HBSDev)
-- Connect with me on LinkedIn: [Hayden Buckley-Smith](https://www.linkedin.com/in/hayden-buckley-smith-b14070142/)
-- Check out my work on GitHub: [hayden-93](https://github.com/hayden-93)
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Table of Contents
+## Learn More
 
-- [Rick and Morty App](../../tree/master/rick-and-morty/README.md)
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
